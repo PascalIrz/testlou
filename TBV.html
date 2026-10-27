@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Lou ROSSANO" />
+
+<meta name="date" content="2026-08-07" />
+
+<title>Projet de caractérisation des têtes de bassin versant de référence alpines</title>
+
+<script src="TBV_files/header-attrs-2.31/header-attrs.js"></script>
+<script src="TBV_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="TBV_files/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<script src="TBV_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="TBV_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="TBV_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="TBV_files/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="TBV_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="TBV_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="TBV_files/navigation-1.1/tabsets.js"></script>
+<link href="TBV_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="TBV_files/highlightjs-9.12.0/highlight.js"></script>
+<link href="TBV_files/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="TBV_files/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="TBV_files/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="TBV_files/leaflet-1.3.1/leaflet.js"></script>
+<link href="TBV_files/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="TBV_files/proj4-2.6.2/proj4.min.js"></script>
+<script src="TBV_files/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="TBV_files/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="TBV_files/leaflet-binding-2.2.3/leaflet.js"></script>
+<script src="TBV_files/leaflet-providers-3.0.0/leaflet-providers.js"></script>
+<script src="TBV_files/leaflet-providers-plugin-2.2.3/leaflet-providers-plugin.js"></script>
+<link href="TBV_files/leaflet-markercluster-1.0.5/MarkerCluster.css" rel="stylesheet" />
+<link href="TBV_files/leaflet-markercluster-1.0.5/MarkerCluster.Default.css" rel="stylesheet" />
+<script src="TBV_files/leaflet-markercluster-1.0.5/leaflet.markercluster.js"></script>
+<script src="TBV_files/leaflet-markercluster-1.0.5/leaflet.markercluster.freezable.js"></script>
+<script src="TBV_files/leaflet-markercluster-1.0.5/leaflet.markercluster.layersupport.js"></script>
+<link href="TBV_files/leaflet-minimap-3.3.1/Control.MiniMap.min.css" rel="stylesheet" />
+<script src="TBV_files/leaflet-minimap-3.3.1/Control.MiniMap.min.js"></script>
+<script src="TBV_files/leaflet-minimap-3.3.1/Minimap-binding.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Projet de caractérisation des têtes de
+bassin versant de référence alpines</h1>
+<h4 class="author">Lou ROSSANO</h4>
+<h4 class="date">2026-08-07</h4>
+
+</div>
+
+
+<div id="introduction-et-contexte" class="section level1">
+<h1><strong>Introduction et contexte</strong></h1>
+<p>Les cours d’eau situés en têtes de bassin versant représentent un
+pourcentage élevé du linéaire du réseau hydrographique et sont les
+premiers à contribuer qualitativement et quantitativement à la ressource
+en eau.</p>
+<p>Ces cours d’eau, qui s’écoulent dans la partie apicale (la plus en
+amont) du réseau hydrographique sont qualifiés par le terme « aqua
+incognita » <span class="citation">(Bishop et al. 2008)</span> en raison
+de la connaissance limitée de leur morphologie comme de leur
+fonctionnement. En effet, les caractéristiques hydromorphologiques de
+ces milieux restent relativement peu connues par rapport aux cours d’eau
+de plus grande taille <span class="citation">(Gomi, Sidle, and
+Richardson 2002)</span>, et peu représentés par les cartographies <span
+class="citation">(Meyer 2003)</span>. Ces systèmes ont longtemps été
+considérés comme secondaires, notamment au vu de leur intermittence
+marquée <span class="citation">(Datry 2026)</span>. Par ailleurs, ces
+derniers sont contraints par de nombreuses pressions anthropiques
+(aménagements, captages, rectification, etc.) qui varient selon les
+contextes géographiques. Ces pressions couplées au contexte de
+changement climatique nécessitent, notamment selon <span
+class="citation">(Costigan et al. 2016)</span>, de les caractériser, de
+les protéger et d’en améliorer la connaissance. Dans ce contexte, l’OFB
+porte le projet « Caractérisation des têtes de bassin versant » qui vise
+à développer les connaissances hydromorphologiques de ces milieux, en
+condition de référence (pour la phase 1, 2024-2028).</p>
+<p>Ce projet s’articule autour de 4 objectifs successifs :</p>
+<ul>
+<li>Réalisation de la synthèse bibliographique ;</li>
+<li>Rédaction du protocole de terrain ;</li>
+<li>Déployer le protocole en milieu alpin ;</li>
+<li>Valoriser les connaissances ;</li>
+</ul>
+<p>Dans cette perspective, le protocole ROHZACE <span
+class="citation">(Mikaël Le Bihan et al. 2025)</span>,« Relevés et
+Observations Hydromorphologiques sur les Zones Amont des Cours d’Eau » a
+été élaboré pour renseigner les caractéristiques des cours d’eau situés
+en têtes de bassins versants. Les observations et les mesures
+hydromorphologiques réalisées sont spécifiquement adaptées aux cours
+d’eau de petites tailles, ce qui le différencie du protocole CARHYCE,
+autre protocole national, développé dans une logique de rapportage de
+l’état hydromorphologique des cours d’eau en lien avec la mise en œuvre
+de la Directive Cadre Européenne sur l’Eau (DCE). ROHZACE permet en
+effet d’appréhender les spécificités (petites dimensions, isolement,
+intermittence des écoulements, etc.) des cours d’eau en TBV dans toute
+leurs diversités et dans tous leurs états. Le projet TBV s’est déjà
+intéressé à différents territoires et a été mis en œuvre en Polynésie
+française (2024), Guyane (2025), et Massif armoricain (2025). Mon stage
+de Master 2 s’inscrit dans les 2 derniers objectifs du projet et
+comprend notamment la déclinaison opérationnelle de ROHZACE en contexte
+alpin.</p>
+</div>
+<div id="les-cours-deau-en-tbv-de-reference" class="section level1">
+<h1><strong>Les cours d’eau en TBV de reference</strong></h1>
+<div id="elements-de-definition" class="section level2">
+<h2><strong>Elements de definition</strong></h2>
+<p>Il est important de préciser qu’il n’existe aucune définition stricte
+d’une tête de bassin versant à l’échelle internationale <span
+class="citation">(Lhéritier 2012)</span>, cependant, certains critères
+sont couramment utilisés pour les caractériser. Toutefois, l’ordre qui
+est attribué aux chenaux d’écoulement en TBV est sensible à la qualité
+et la précision de la donnée cartographique utilisée <span
+class="citation">(M. Le Bihan 2009)</span>, ce qui n’est pas sans
+conséquence sur sa valeur et sa correspondance avec les observations de
+terrain.</p>
+<p>Le principe de la classification de Strahler est d’attribuer une
+valeur à la position du cours d’eau au sein du réseau hydrographique,
+qui croit à mesure que deux cours d’eau du même rang (n) se rencontrent
+et forment un cours d’eau de rang supérieur (n+1) <span
+class="citation">(Strahler 1957)</span>. La définition des TBV basée sur
+le rang de Strahler reste contestée [CM3.1]car elle n’intègre pas les
+processus hydrologiques et biologiques <span class="citation">(Alexander
+et al. 2007)</span>. Toutefois, l’accessibilité et la disponibilité des
+données, ainsi que le caractère universel de cette classification
+(indépendant du contexte biogéographique) justifient son
+utilisation.</p>
+<p>A titre d’exemple, à l’échelle du bassin versant de la Loire, les
+cours d’eau de rangs 1 et 2 représentent 77% du linéaire hydrographique
+avec 75 050 km de cours d’eau. Les rangs 1 et 2 du territoire de Monts
+et Barrages constituent quant à eux 75% du linéaire hydrographique en
+occupant une surface de 670 km² sur une surface totale de 860 km². Plus
+globalement, on peut retenir que les cours d’eau de rangs 1 et 2
+représentent près de 75% du linéaire hydrographique national <span
+class="citation">(Souchon, Cohen, and Andriamahéfa 2000)</span>.</p>
+<p>A l’échelle mondiale, ces cours d’eau apicaux peuvent représenter 60
+à 80% du linéaire total du réseau hydrographique <span
+class="citation">(SCHUMM 1956)</span> et peuvent drainer entre 70 et 80%
+de la superficie totale du BV <span class="citation">(Meyer and Wallace
+2001)</span>. Aux Etats-Unis, <span class="citation">(Golden et al.
+2025)</span> ont identifié que les cours d’eau amont s’étendent sur
+environ 8,4 millions de kilomètres, composant 77 % du linéaire total du
+réseau hydrographique.</p>
+</div>
+<div id="organisation-des-cours-deau-en-tbv" class="section level2">
+<h2><strong>Organisation des cours d’eau en TBV</strong></h2>
+<p>Les cours d’eau apparaissent <strong>lorsque les écoulements
+superficiels sont suffisamment concentrés</strong> pour produire de
+l’érosion et creuser un lit aux bordures distinctes <span
+class="citation">(MacDonald and Coe 2007)</span>.</p>
+<p>On peut distinguer entre les cours d’eau (de rang 1) et leurs sources
+diffuses des chenaux de transitions de taille variables (les rangs
+0)(Fig ?). Les bassins des cours d’eau d’ordre 0 correspondent à l’aire
+d’alimentation qui contribue directement aux cours d’eau d’ordre 1 <span
+class="citation">(Benda et al. 2005)</span>./ C’est dans ces espaces de
+transition que des écoulements achenalisés drainent et dirigent les eaux
+de leurs sources vers les cours d’eau d’ordre 1 <span
+class="citation">(Gomi, Sidle, and Richardson 2002)</span>. Les
+écoulements de rang 1 sont identifiés à partir de la tête du lit <span
+class="citation">(Montgomery and Dietrich 1989; Sidle, Gomi, and
+Tsukamoto 2018)</span>, qui délimite les écoulements non chenalisés de
+ceux chenalisés.</p>
+<div align="center">
+<p><img src="data/schema%20tbv.png" width="700px"></p>
+<p><em>Figure 1 : Schéma simplifié d’une tête de bassin versant au sein
+d’un BV topographique, Lou Rossano</em></p>
+</div>
+<p>L’alimentation en eau des têtes de bassins versants peut être issue
+de sources ponctuelles ou diffuses <span class="citation">(Mikael Le
+Bihan 2023)</span> qui sont souvent associées à des zones humides
+(tourbières, prairies humides, etc). Ces zones humides sont elles-mêmes
+alimentées par la pluie, les eaux de fonte (neige, névés, glaciers), les
+eaux de ruissellements, etc. <span class="citation">(Barnaud
+2013)</span>. Elles sont généralement de petites dimensions, avec une
+superficie souvent inférieure à 100 m² <span class="citation">(Janisch,
+Wondzell, and Ehinger 2012)</span>.</p>
+</div>
+<div id="la-notion-de-référence" class="section level2">
+<h2><strong>La notion de référence</strong></h2>
+<p>La notion de référence est un vaste sujet qui fait débat dans des
+milieux ou l’empreinte humaine est omniprésente . Elle se confronte
+également aux définitions de chaque génération, liées à une construction
+sociale, qui en fait une norme glissante intergénérationnelle <span
+class="citation">(Godet, Dufour, and Rollet 2023a)</span>. Cet état
+permet d’appréhender de manière comparative la condition d’un autre
+cours d’eau en déterminant s’il correspond au « bon état écologique »,
+qui se défini comme ayant un faible écart à une situation de référence
+<span class="citation">(Gob et al. 2014)</span>.</p>
+<p>L’ état de référence peut être déterminé à partir de données
+historiques mais encore doivent-elles être précises, et encore faut-il
+savoir à quelle période se référer <span class="citation">(Schletterer
+et al. 2014)</span>. Par exemple, l’évolution des conditions climatiques
+(durant l’Holocène) <span class="citation">(Wyżga et al. 2012)</span> et
+des pressions anthropiques <span class="citation">(Dufour and Piégay
+2009)</span> ne permettent pas de définir un état hydromorphologique
+pré-perturbations.</p>
+<p>La seconde approche est de rechercher spatialement des zones pas ou
+peu impactés selon le critère de naturalité , d’autres limites se posent
+comme leurs représentativités, leurs échelle spatiale ou l’intégration
+de l’influence anthropique <span class="citation">(Godet, Dufour, and
+Rollet 2023b)</span>. L’idée de se rapprocher d’un état « naturel » au
+sens d’intact et dépourvu d’influence anthropique est aujourd’hui
+compliqué. Les cours d’eau qui répondent au critère de référence sont
+alors souvent ceux les moins affectés qui ont les meilleures conditions
+au sein d’une aire donnée <span class="citation">(Herlihy et al.
+2008)</span>. Etant très rares, la référence s’ouvre à de nouvelles
+définitions notamment en se basant sur les traits fonctionnels, les
+niveaux d’altération des biocénoses, etc <span
+class="citation">(Armanini et al. 2013)</span>. La notion de référence
+est aujourd’hui définie sous un prisme dynamique et non pas immuable,
+avec un état d’équilibre qui intègre un ajustement entre les variables
+de contrôle et de réponse (cf I.1.b)<span class="citation">(Boon, Calow,
+and Petts 1992)</span>.</p>
+<p>Certains auteurs préconisent de ne pas exclure directement un site où
+une pression anthropiques est observée (R. K. Johnson et al., 2003) mais
+d’observer si ses conséquences sont nulles, très faible ou difficilement
+discernable du fonctionnement qui semble naturel <span
+class="citation">(Mengin et al. 2009)</span>. Ainsi, un cours d’eau dit
+de « référence » signifie qu’il est proche des conditions naturelles,
+n’est pas ou peu dégradé par les activités et aménagements anthropiques
+et possède un état de fonctionnement physique global correct dans un
+contexte local donné <span class="citation">(Mikaël Le Bihan et al.
+2025)</span>. Trois critères principaux sont utilisés pour l’appréhender
+: la physico-chimie, la biologie et l’hydromorphologie <span
+class="citation">(Sánchez-Montoya et al. 2009)</span>.</p>
+<p><em>Sélection de sites de référence</em> : L’approche par critère
+quantifié, est la méthode la plus utilisée pour sélectionner des sites
+de référence <span class="citation">(Godet, Dufour, and Rollet
+2023c)</span>. Elle s’appuie sur des mesures de terrain, une analyse
+cartographique (pose d’autres questions comme la justesse des données,
+etc.), et peut être complétée par de l’expertise locale (gestionnaires,
+riverains, etc.) <span class="citation">(Guyon and Battaglia
+2018)</span>.</p>
+</div>
+<div id="caractéristiques-des-tbv-alpines" class="section level2">
+<h2><em>Caractéristiques des TBV alpines</em> :</h2>
+<div id="caractéristiques-physiques" class="section level3">
+<h3>Caractéristiques physiques</h3>
+<p>Les cours d’eau en TBV alpins possèdent majoritairement des chenaux à
+pentes raides <span class="citation">(Liébault 2017)</span>, confinées
+et avec une forte rugosité où l’alimentation en sédiment se fait
+principalement par les versants <span class="citation">(Benda et al.
+2005)</span>. Ils représentent des systèmes géomorphologiques complexes
+qui charrient une large gamme de sédiments <span class="citation">(Hungr
+2005)</span>. Les écoulements des zones sources dans les vallées
+confinées des hydrosystèmes les plus à l’amont peuvent affecter les
+pentes et des chenaux[CM20.1] (en raison du couplage étroit des
+processus hydrologiques et géomorphologiques) <span
+class="citation">(Sidle et al. 2000)</span>.</p>
+<p>Les montagnes assurent le rôle de « châteaux d’eau » pour les zones
+aval <span class="citation">(Viviroli et al. 2007)</span>. Leurs apports
+en eau sont issus de la fonte des neiges [@(pdf)ad]<span
+class="citation">(Hannah et al. 2007)</span> et des glaciers <span
+class="citation">(A. M. Milner et al. 2010)</span>, de l’eau souterraine
+<span class="citation">(L. E. Brown, Hannah, and Milner 2003)</span>et
+des pluies intermittentes durant l’été et le printemps.</p>
+</div>
+<div id="caractéristiques-physico-chimiques" class="section level3">
+<h3>Caractéristiques physico-chimiques :</h3>
+<p>Les propriétés physico-chimiques (température, conductivité, pH…)
+peuvent changer sur des échelles temporelles allant du journalier à
+l’interannuel <span class="citation">(Hannah et al. 2007)</span> et sont
+déterminantes pour les communautés biotiques. L’hétérogénéité
+physicochimique de l’environnement crée une mosaïque spatiale et
+temporelle d’habitats fluviaux liée aux contributions des différentes
+sources d’eau à la connectivité hydrologique <span
+class="citation">(Malard et al. 2006)</span>.</p>
+<p>La température de l’eau varie considérablement dans les systèmes
+fluviaux alpins, tant temporellement que spatialement <span
+class="citation">(Lee E. Brown and Hannah 2008)</span>. Ces variations
+thermiques sont influencées par (1) la contribution relative des
+différentes sources d’eau (y compris les interactions entre les eaux de
+surface et les eaux souterraines), (2) les conditions
+hydroclimatologiques dominantes, (3) la distance de la source, etc.
+<span class="citation">(Lee E. Brown, Hannah, and Milner 2005)</span>.
+En été, les températures de l’eau présentent une variabilité journalière
+importante, notamment dans les cours d’eau glaciaires, où le rayonnement
+solaire influence notamment les amplitudes thermiques. Ces variations
+thermiques sont influencées par (1) la contribution relative des
+différentes sources d’eau (y compris les interactions entre les eaux de
+surface et les eaux souterraines), (2) les conditions
+hydroclimatologiques dominantes, (3) la distance de la source, etc.
+<span class="citation">(Lee E. Brown, Hannah, and Milner
+2005)</span>.</p>
+</div>
+<div id="caractéristiques-biologiques" class="section level3">
+<h3>Caractéristiques biologiques :</h3>
+<p>La stabilité du chenal est un déterminant majeur de l’abondance et de
+la diversité des communautés biologiques des cours d’eau alpins <span
+class="citation">(Alexander M. Milner et al. 2001)</span>. Les
+populations d’espèces présentent dans les écosystèmes de montagnes sont
+adaptés à des conditions extrêmes <span class="citation">(Wissinger,
+Oertli, and Rosset 2016)</span>. Elles supportent l’effet de gradients
+(température, de radiation, de vent, etc) <span
+class="citation">(Lamouille-Hébert 2025)</span> à l’origine de
+l’étagement de la végétation en montagne. L’étagement de la végétation
+pourrait être mis en relation avec la présence ou non de ripisylve,
+notamment en étage alpin dominé par des pelouses, qui pourraient
+influencer la morphologie des cours d’eau. Cet étagement structure les
+espèces et fait des milieux de montagne un support de biodiversité riche
+avec de nombreuses espèces endémiques <span class="citation">(Jenkins,
+Pimm, and Joppa 2013)</span>. Les intrants allochtones dans les cours
+d’eau alpins sont généralement faibles <span class="citation">(Zah and
+Uehlinger 2001)</span>; et donc la production secondaire dépend
+directement des sources d’énergie autochtones <span
+class="citation">(Uehlinger 2003)</span>.</p>
+</div>
+</div>
+</div>
+<div id="traitement-des-données-alpes-2026" class="section level1">
+<h1><strong>Traitement des données Alpes 2026</strong></h1>
+<p>A l’issue de ces trois campagnes, 42 stations ont pu être
+caractérisées. Parmi elles, 6 se situent dans les Ecrins, 18 dans le
+Queyras et 18 dans le Mercantour (Tab. 1).</p>
+<div align="center">
+<p><img src="data/loc_stations.png" width="700px" style="border: 1px solid black;"></p>
+<p><em>Tableau 1 : Localisation et nombre de stations caractérisées pour
+chaque secteur géographique étudié, Lou Rossano.</em></p>
+</div>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-f419f38f504a9f34bb33" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-f419f38f504a9f34bb33">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["OpenTopoMap",null,"Topographique",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["OpenStreetMap",null,"OpenStreetMap",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[44.832,44.87368,44.74208,44.73942,44.73912,44.7393,44.8765,44.88209,44.88296,44.88199,44.85272,44.85012,44.84587,44.69183,44.69099,44.69963,44.6965,44.69398,44.69141,44.69102,44.6896,44.6916,44.69497,44.70902,44.33587,44.33536,44.33409,44.38448,44.333714,44.32875,44.32689,44.31057,44.292087,44.338887,44.337263,44.337913,44.333288,44.333325,44.337283,44.337888,44.327013,44.326835],[6.4076,6.49447,6.43377,6.405,6.405,6.40451,6.77108,6.7753,6.77716,6.7794,6.79358,6.79251,6.77997,6.97954,6.98019,6.98812,7.05601,7.05433,7.05392,7.06064,7.05917,7.05126,7.04868,7.03293,6.833463,6.83469,6.83405,6.838625,6.84159,6.79774,6.836783,6.80326,6.822915,6.813163,6.882061,6.822557,6.779272,6.779443,6.784182,6.785432,6.83613,6.839245],7,null,null,{"interactive":true,"className":"","stroke":true,"color":["#1B9E77","#1B9E77","#1B9E77","#1B9E77","#1B9E77","#1B9E77","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["#1B9E77","#1B9E77","#1B9E77","#1B9E77","#1B9E77","#1B9E77","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#7570B3","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996","#598996"],"fillOpacity":0.9},{"showCoverageOnHover":false,"zoomToBoundsOnClick":true,"spiderfyOnMaxZoom":true,"removeOutsideVisibleBounds":true,"spiderLegPolylineOptions":{"weight":1.5,"color":"#222","opacity":0.5},"freezeAtZoom":false},null,["<h4>Station 1<\/h4><b>Massif :<\/b> Ecrins<br><br><img src='photo/station1.jpg' width='300'>","<h4>Station 2<\/h4><b>Massif :<\/b> Ecrins<br><br><img src='photo/station2.jpg' width='300'>","<h4>Station 3<\/h4><b>Massif :<\/b> Ecrins<br><br><img src='photo/station3.jpg' width='300'>","<h4>Station 4<\/h4><b>Massif :<\/b> Ecrins<br><br><img src='photo/station4.jpg' width='300'>","<h4>Station 5<\/h4><b>Massif :<\/b> Ecrins<br><br><img src='photo/station5.jpg' width='300'>","<h4>Station 6<\/h4><b>Massif :<\/b> Ecrins<br><br><img src='photo/station6.jpg' width='300'>","<h4>Station 7<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station7.jpg' width='300'>","<h4>Station 8<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station8.jpg' width='300'>","<h4>Station 9<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station9.jpg' width='300'>","<h4>Station 10<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station10.jpg' width='300'>","<h4>Station 11<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station11.jpg' width='300'>","<h4>Station 12<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station12.jpg' width='300'>","<h4>Station 13<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station13.jpg' width='300'>","<h4>Station 14<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station14.jpg' width='300'>","<h4>Station 15<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station15.jpg' width='300'>","<h4>Station 16<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station16.jpg' width='300'>","<h4>Station 17<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station17.jpg' width='300'>","<h4>Station 18<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station18.jpg' width='300'>","<h4>Station 19<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station19.jpg' width='300'>","<h4>Station 20<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station20.jpg' width='300'>","<h4>Station 21<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station21.jpg' width='300'>","<h4>Station 22<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station22.jpg' width='300'>","<h4>Station 23<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station23.jpg' width='300'>","<h4>Station 24<\/h4><b>Massif :<\/b> Queyras<br><br><img src='photo/station24.jpg' width='300'>","<h4>Station 25<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station25.jpg' width='300'>","<h4>Station 26<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station26.jpg' width='300'>","<h4>Station 27<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station27.jpg' width='300'>","<h4>Station 28<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station28.jpg' width='300'>","<h4>Station 29<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station29.jpg' width='300'>","<h4>Station 30<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station30.jpg' width='300'>","<h4>Station 31<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station31.jpg' width='300'>","<h4>Station 32<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station32.jpg' width='300'>","<h4>Station 33<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station33.jpg' width='300'>","<h4>Station 34<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station34.jpg' width='300'>","<h4>Station 35<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station35.jpg' width='300'>","<h4>Station 36<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station36.jpg' width='300'>","<h4>Station 37<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station37.jpg' width='300'>","<h4>Station 38<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station38.jpg' width='300'>","<h4>Station 39<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station39.jpg' width='300'>","<h4>Station 40<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station40.jpg' width='300'>","<h4>Station 41<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station41.jpg' width='300'>","<h4>Station 42<\/h4><b>Massif :<\/b> Mercantour<br><br><img src='photo/station42.jpg' width='300'>"],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLayersControl","args":[["Topographique","OpenStreetMap"],[],{"collapsed":false,"autoZIndex":true,"position":"topright"}]},{"method":"addLegend","args":[{"colors":["#1B9E77","#598996","#7570B3"],"labels":["Ecrins","Mercantour","Queyras"],"na_color":null,"na_label":"NA","opacity":0.5,"position":"bottomright","type":"factor","title":"Massif","extra":null,"layerId":null,"className":"info legend","group":null}]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":false,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addMiniMap","args":[null,"OpenStreetMap","topright",150,150,19,19,-5,5,false,false,false,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]},{"method":"addControl","args":["\n  <div style='\n    background:white;\n    padding:5px;\n    border-radius:5px;\n    text-align:center;\n    font-weight:bold;\n    font-size:18px;\n  '>\n    ↑<br>\n    N\n  <\/div>\n  ","topleft",null,"info legend"]}],"setView":[[44.58023585714286,6.813065261904762],10,[]],"limits":{"lat":[44.292087,44.88296],"lng":[6.40451,7.06064]}},"evals":[],"jsHooks":[]}</script>
+<div style="text-align: center;">
+<p><em>Figure 2 : Localisation des stations caractérisées dans les
+différents massifs étudiés, Lou Rossano.</em></p>
+</div>
+</div>
+<div id="traitement-des-données-de-lensemble-des-massifs"
+class="section level1">
+<h1><strong>Traitement des données de l’ensemble des
+massifs</strong></h1>
+<div id="analyses-statistiques-descriptives" class="section level2">
+<h2><strong>Analyses statistiques descriptives </strong></h2>
+<div align="center">
+<p><img src="data/rmarkdown_partenaires/ensemble/distri.png" width="700px" style="border: 1px solid black;"></p>
+<p><em>Figure 3 : Distribution des variables pour chaque massif , Lou
+Rossano.</em></p>
+</div>
+<p>Les distributions et les valeurs médianes des variables mettent en
+évidence une variabilité des caractéristiques morphologiques et
+granulométriques entre les trois massifs (Fig. 3).<br />
+Les différences sont particulièrement marquées pour le D84, le D50 et le
+pourcentage de faciès rapides, pour lesquels les Ecrins se distinguent
+du Queyras et du Mercantour. La pente présente également des différences
+importantes, le Mercantour se distinguant des deux autres massifs par
+une distribution plus homogène sur des valeurs de pentes plus faibles. À
+l’inverse, certaines variables présentent un recouvrement plus important
+entre les massifs. C’est notamment le cas de la largeur plein bord, dont
+les valeurs médianes sont relativement proches, avec 1,59 m pour les
+Écrins, 1,86 m pour le Mercantour et 1,30 m pour le Queyras. La hauteur
+plein bord présente également un recouvrement important entre les
+massifs, avec des valeurs médianes proches, de l’ordre de 0,07 m pour
+l’écart-type et de 0,18 m pour la moyenne. Le coefficient de sinuosité
+présente également un recouvrement important entre le Mercantour et les
+Ecrins avec des valeurs médianes de 1,05 et 1,06, tandis que le Queyras
+présente une sinuosité médiane de 1,08.</p>
+<div align="center">
+<p><img src="data/rmarkdown_partenaires/ensemble/courbe_granulometrique.png" width="700px" style="border: 1px solid black;"></p>
+<p><em>Figure 4 : Courbes granulométriques cumulées, échelle
+logarithmique, Lou Rossano.</em></p>
+</div>
+<p>Selon l’échelle granulométrique de Wentworth modifiée proposée par
+Malavoi &amp; Souchon (2002), la granulométrie des massifs étudiés est
+globalement grossière (Fig. 4). La classe granulométrique des cailloux
+(16-64 mm) est dominante pour les Ecrins, le Queyras et le Mercantour,
+représentant respectivement 61,6 %, 49,4 % et 57,2 % des sédiments. Pour
+les Ecrins, la classe granulométrique secondaire est celle des pierres
+(64-256 mm) avec 21,8 %, tandis que pour le Mercantour et le Queyras, il
+s’agit de la classe des graviers (2-16 mm) avec respectivement 22.3 % et
+29,2 % des sédiments.</p>
+<div align="center">
+<p><img src="data/rmarkdown_partenaires/ensemble/bx_pente.png" width="700px" style="border: 1px solid black;"></p>
+<p><em> Figure 5 : Boxplot des pentes de chaque massif, Lou
+Rossano.</em></p>
+</div>
+<p>Les pentes des stations du Mercantour sont comprises entre 3% et
+20,3%, tandis que celles du Queyras et des Ecrins présentent
+respectivement des pentes comprises entre 1,83% et 50,6% et 3,4% et
+32,7%. Par ailleurs, la majorité des stations présentent une pente
+inférieure à 20 %. Parmi elles, 38,1 % ont une pente comprise entre 0 et
+10 %, 9,52 % entre 10 et 15 % et 28,6 % entre 15 et 20 %.</p>
+<div align="center">
+<p><img src="data/rmarkdown_partenaires/ensemble/ratio_LPB_HPB.png" width="700px" style="border: 1px solid black;"></p>
+<p><em>Figure 6 : Boxplot du rapport L/P de chaque massif, Lou
+Rossano.</em></p>
+</div>
+<p>La valeur médiane du rapport L/P pour l’ensemble des stations est de
+8,10, avec des valeurs comprises entre 3,40 et 22,90 (Fig. 6). Les
+distributions du rapport L/P ne présentent pas de différences marquées
+entre les trois massifs. Les valeurs médianes sont de 8,50 dans les
+Écrins, 7,81 dans le Queyras et 8,65 dans le Mercantour. La distribution
+apparaît toutefois plus dispersée dans le Mercantour, où plusieurs
+valeurs s’écartent de la distribution principale, aussi bien vers les
+valeurs élevées que vers les valeurs faibles.</p>
+<div align="center">
+<p><img src="data/rmarkdown_partenaires/ensemble/surface_bv.png" width="700px" style="border: 1px solid black;"></p>
+<p><em>Figure 7 : Boxplot des surfaces des bassins versants de chaque
+massif, Lou Rossano.</em></p>
+</div>
+<p>La surface médiane des bassins versants pour l’ensemble des massifs
+est de 0,142 km², avec des valeurs comprises entre 0,006 et 4,26 km².
+L’ensemble des données correspondent à des bassins versants de petite
+taille. La surface des bassins versants apparaît visuellement similaire
+entre le Mercantour et le Queyras, tandis qu’elle est plus étendue dans
+les Écrins, malgré un nombre plus limité de stations représentées (5
+stations) (Fig. 7). Les valeurs médianes sont de 0,96 km² dans les
+Écrins, 0,142 km² dans le Mercantour et 0,141 km² dans le Queyras. Des
+valeurs extrêmes s’écartant de la distribution principale sont observées
+dans chacun des trois massifs.</p>
+</div>
+<div id="analyses-statistiques-bivariées" class="section level2">
+<h2><strong>Analyses statistiques bivariées</strong></h2>
+<div align="center">
+<p><img src="data/rmarkdown_partenaires/ensemble/regression_facies_massifs.png" width="700px" style="border: 1px solid black;"></p>
+<p><em>Figure 8 : Relation entre la pente et le pourcentage de faciès
+rapides sur l’ensemble des massifs, Lou Rossano.</em></p>
+</div>
+<p>Pour l’ensemble des données, le pourcentage de faciès rapides
+(déterminés selon la typologie de Malavoi &amp; Souchon (2002)présente
+naturellement une relation positive et significative avec la pente de la
+ligne d’eau (p = 0,0117). Lorsque les faciès sont considérés
+individuellement, les faciès de type rapide présentent une relation
+positive et significative avec la pente (p &lt; 0,001), tandis que les
+plats courants présentent une relation négative et significative (p &lt;
+0,001) (Fig. 8). En revanche, aucune relation significative avec la
+pente n’est mise en évidence pour les radiers (p = 0,413), cascades (p =
+0,963), chutes (p = 0,345), fosses de dissipation (p = 0,859), mouilles
+de concavité (p = 0,296) et plats lentiques (p = 0,057). Il convient
+toutefois de noter que les mouilles de concavité sont représentées par
+un nombre limité d’observations à l’échelle des trois massifs.</p>
+<div align="center">
+<p><img src="data/rmarkdown_partenaires/ensemble/corrplot.png" width="700px" style="border: 1px solid black;"></p>
+<p><em>Figure 9 : Matrice des corrélations entre les différentes
+variables d’étude, Lou Rossano.</em></p>
+</div>
+<p>La matrice des corrélations met en évidence la force et le sens des
+relations entre les différentes variables étudiées pour l’ensemble des
+trois massifs (Fig. 9). La corrélation la plus forte est observée entre
+le D50 et le D84 (r = 0,95). La largeur plein bord moyenne et la hauteur
+plein bord moyenne présentent également une forte corrélation positive
+(r = 0,84). Une corrélation positive relativement forte est également
+observée entre la présence de sous-berges et le coefficient de sinuosité
+(r = 0,64). Le pourcentage de faciès rapides est quant à lui
+positivement corrélé à la pente (r = 0,39), au D50 (r = 0,34) et au D84
+(r = 0,33), indiquant que la proportion de faciès rapides tend à
+augmenter lorsque ces variables augmentent. Les variables
+granulométriques présentent par ailleurs des corrélations positives avec
+plusieurs variables morphologiques, notamment la hauteur plein bord
+moyenne et la largeur plein bord moyenne. À l’inverse, la pente, le D50,
+le D84 et le ratio LPB/HPB présentent des corrélations négatives avec la
+présence de sous-berges et le coefficient de sinuosité.</p>
+</div>
+<div id="analyses-statistiques-multivariées" class="section level2">
+<h2><strong>Analyses statistiques multivariées</strong></h2>
+<p><strong>Les analyses statistiques multivariées ont uniquement été
+réalisées sur l’ensemble du jeu de données, car, le nombre limité de
+stations pour chacun des massifs (maximim 18) ne permettrait pas
+d’obtenir de relations suffisamment robustes. </strong></p>
+<div align="center">
+<p><img src="data/rmarkdown_partenaires/ensemble/ACP_variables.png" width="700px" style="border: 1px solid black;"></p>
+<p><em>Figure 10 : Analyse en composantes principales (ACP) des
+variables étudiées pour l’ensemble des massifs, Lou Rossano.</em></p>
+</div>
+<p>La dimension 1 traduit principalement un gradient lié aux
+caractéristiques granulométriques et aux dimensions du chenal. Elle
+oppose les valeurs élevées de D50, D84 et de largeur plein bord à la
+sinuosité et à la présence de sous-berges (Fig. 10). La dimension 2
+semble davantage refléter la variabilité de la hauteur du chenal et
+certaines caractéristiques morphologiques, principalement à travers la
+hauteur plein bord moyenne et son écart-type, ainsi que la sinuosité et
+la présence de sous-berges. À l’inverse, la pente, le rapport L/P, le
+D50, le D84 et le pourcentage de faciès rapides sont orientés
+négativement sur cet axe.</p>
+<div align="center">
+<p><img src="data/rmarkdown_partenaires/ensemble/Capture d'écran 2026-08-26 120949.png" width="700px" style="border: 1px solid black;"></p>
+<p><em>Tableau 2 : Synthèse des modèles de régression linéaire multiple
+obtenus par sélection descendante selon le critère d’AIC, Lou
+Rossano.</em></p>
+</div>
+<p>Les modèles sélectionnés retiennent principalement la pente et
+l’altitude comme variables explicatives (Tab. 2). La pente est notamment
+associée au D50 (p = 0,016), au D84 (p = 0,008) et au pourcentage de
+faciès rapides (p = 0,003), tandis que l’altitude intervient dans
+plusieurs variables morphologiques (indice de sous berge, pourcentage de
+faciès rapides, sinuosité, hauteur à plein bord écart-type).
+L’appartenance au massif intervient pour la sinuosité (p = 0,019), et
+l’indice de sous-berges (p = 0,039). Les R² ajustés restent toutefois
+relativement faibles, indiquant une capacité explicative limitée des
+modèles (compris entre R² = 0,045 et R² = 0,241).</p>
+</div>
+<div
+id="caractéristiques-communes-aux-cours-deau-en-tbv-de-référence-en-contexte-alpin"
+class="section level2">
+<h2><strong>Caractéristiques communes aux cours d’eau en TBV de
+référence en contexte alpin</strong></h2>
+<p>Les cours d’eau en têtes de bassin versant alpines de référence
+dégagent, au regard des 42 stations étudiées, des caractéristiques
+communes. Ils sont ainsi caractérisés par une faible sinuosité avec une
+valeur moyenne de 1,06. Cette valeur correspond à la limite basse du
+seuil entre les chenaux subrectilignes (1 ≤ SI &lt; 1,05) et sinueux
+(1,05≤ SI &lt; 1,5) <span
+class="citation">(<strong>Malavoi2011?</strong>)</span> (Fig. 11).</p>
+<div align="center">
+<p><img src="data/sinuosite.png" width="700px" style="border: 1px solid black;"></p>
+<p><em>Figure 11 : Photographie de cours d’eau en têtes de bassin
+versant de référence en contexte alpin représentant des chenaux
+rectiligne (à gauche) et peu sinueux (à droite).</em></p>
+</div>
+<p>Les valeurs médianes des largeurs et hauteurs plein bord moyennes
+sont respectivement de 1.79 m et 0.2m. Ces valeurs illustrent les
+petites dimensions des cours d’eau en têtes de bassin versant (Fig. 12),
+caractéristique souvent évoquée dans la littérature (Le Bihan, 2023 ;
+Wohl et al., 2026).</p>
+<div align="center">
+<p><img src="data/dimension.jpg" width="700px" style="border: 1px solid black;"></p>
+<p><em>Figure 12 : Photographie illustrant les petites dimensions des
+cours d’eau en tête de bassin versant en contexte alpin.</em></p>
+</div>
+<p>Les cours d’eau caractérisés présentent des pentes modérées à fortes,
+qu’il reste important de nuancer au regard des contraintes de terrain
+rencontrées, notamment dans le massif des Écrins. En effet, les cours
+d’eau avec une dynamique davantage colluviale limitent le déploiement du
+protocole ROHZACE, en présentant notamment une intermittence marquée et
+des écoulements discontinus (Brardinoni &amp; Hassan, 2007).</p>
+<p>La granulométrie médiane (D50) et du 84e percentile (D84) se situent
+respectivement dans les classes granulométriques des cailloux (16-64 mm)
+et des pierres (64-256 mm), indiquant une granulométrie globalement
+grossière des stations étudiées (Montgomery &amp; Buffington, 1997)
+(Fig. 13).</p>
+<div align="center">
+<p><img src="data/bloc_rocheux.png" width="700px" style="border: 1px solid black;"></p>
+<p><em>Figure 13 : Photographie d’un cours d’eau en tête de bassin
+versant de référence avec un lit à blocs rocheux.</em></p>
+</div>
+<p>Les cours d’eau en TBV de référence de l’étude présentent des
+surfaces de bassins versant faibles avec une médiane de 0,140 km². Dans
+les limites de l’échantillon étudié, la surface du bassin versant ne
+semble pas présenter de relation significative avec les caractéristiques
+hydromorphologiques des cours d’eau, contrairement aux données
+bibliographiques (Faustini et al., 2009).</p>
+</div>
+<div
+id="caractériser-un-nombre-et-une-diversité-plus-importants-de-cours-deau-en-tbv-alpines-de-référence"
+class="section level2">
+<h2><strong>Caractériser un nombre et une diversité plus importants de
+cours d’eau en TBV alpines de référence</strong></h2>
+<p>En contexte alpin, les hydrosystèmes présentent une forte diversité
+de configurations hydromorphologiques, des cours d’eau à faible pente
+jusqu’aux chenaux colluviaux à très fortes pentes (Hohensinner et al.,
+2021). Cette diversité est notamment liée aux caractéristiques
+topographiques, géologiques et géomorphologiques des bassins versants
+qui contrôlent en partie les conditions d’écoulement et la morphologie
+des chenaux (Fig. 14). Cette diversité est également observée au sein
+des stations étudiées. La majorité d’entre elles présentent des pentes
+inférieures à 20%, avec une gamme de répartition assez large : 38,1 %
+des stations présentent des pentes comprises entre 0 et 10 %, 9,52%
+entre 10 et 15% et 28,6% entre 15 et 20%.</p>
+<div align="center">
+<p><img src="data/buffington.png" width="700px" style="border: 1px solid black;"></p>
+<p><em>Figure 14 : Influence des conditions du bassin versant sur les
+types de tronçons de cours d’eau (en bleu) et les caractéristiques
+associées du chenal. Modifié d’après Buffington (2012) ; basé sur les
+concepts de Schumm (1977, 1985).</em></p>
+</div>
+<p>La diversité des configurations hydromorphologiques s’inscrit dans
+celle, plus générale, des contextes topographiques et géomorphologiques
+rencontrés en montagne (Winter, 2001). La topographie et la morphologie
+des milieux fluviaux influencent notamment les réseaux de drainage, la
+présence et la répartition des zones humides ainsi que les modalités de
+circulation des eaux de surface et souterraines. La perméabilité des
+formations géologiques et les caractéristiques du substrat participent
+également à contrôler les voies d’écoulement hydrologique (Wolock et
+al., 2004). Ces relations entre les caractéristiques du BV et le
+fonctionnement des cours d’eau est notamment illustré par Buffington
+(2012). La transition entre les cours d’eau colluviaux et alluviaux
+reste toutefois peu documentée. Les cours d’eau colluviaux sont en effet
+plus difficiles à caractériser en raison notamment de leur faible
+accessibilité et de leur morphologie spécifique (Wohl et al., 2026).
+Dans les secteurs alpins à fortes pentes, la morphologie des cours d’eau
+est notamment contrôlée par la topographie, le confinement de la vallée,
+le substratum et les éléments grossiers du lit. Ces facteurs peuvent
+limiter la migration latérale du chenal et favoriser des linéaires
+relativement rectilignes ou faiblement sinueux (Montgomery &amp;
+Buffington, 1997). Les tronçons colluviaux non chenalisés sont dépourvus
+de chenaux d’écoulement clairement identifiables, mais peuvent présenter
+des ruissellements de surface éphémères. Plus en aval, les tronçons
+colluviaux chenalisés présentent des écoulements temporaires, dont la
+capacité de transport reste limitée et ne permet pas nécessairement la
+mobilisation et le tri des matériaux colluviaux. La morphologie,
+caractérisée par une forte hétérogénéité granulométrique, est
+principalement contrôlée par des éléments répartis de manière
+stochastique permettant difficilement d’identifier des faciès
+d’écoulement individualisés (Bisson et al., 2017). Cette diversité de
+configuration constitue un enjeu important pour la caractérisation des
+cours d’eau alpins. Dans le cadre de cette étude, ces contraintes ont
+notamment limité le déploiement du protocole ROHZACE sur certains cours
+d’eau colluviaux, notamment au sein de la Réserve intégrale du
+Lauvitel.</p>
+</div>
+</div>
+<div id="perspectives" class="section level1">
+<h1><strong>Perspectives </strong></h1>
+<div
+id="caractériser-un-nombre-et-une-diversité-plus-importants-de-cours-deau-en-tbv-alpines-de-référence-1"
+class="section level3">
+<h3><strong>Caractériser un nombre et une diversité plus importants de
+cours d’eau en TBV alpines de référence </strong></h3>
+<p>L’une des limites identifiées dans l’analyse des données produites
+dans le cadre de cette étude tient au nombre limité de stations sur les
+cours d’eau en TBV de référence, caractérisées par le protocole ROHZACE
+en contexte alpin, en particulier dans le massif des Ecrins. Afin de
+corroborer ou de réfuter les hypothèses et les corrélations mises en
+évidence tout au long de cette étude, il serait très intéressant de
+pouvoir disposer de données sur un nombre plus important de stations,
+dans les contextes les plus variés possibles au sein même du grand
+contexte alpin. En particulier, réussir à identifier et caractériser des
+cours d’eau de rangs 1 et 2 dans une gamme de surfaces de BV amont plus
+étendue permettrait de disposer d’éléments pertinents pour confirmer ou
+infirmer l’influence de la taille du BV amont sur les caractéristiques
+hydromorphologiques des cours d’eau en TBV de référence en contexte
+alpin.</p>
+</div>
+<div
+id="élaboration-dune-méthodologie-complémentaire-au-protocole-rohzace"
+class="section level3">
+<h3><strong>Élaboration d’une méthodologie complémentaire au protocole
+ROHZACE </strong></h3>
+<p>La difficulté d’accès aux cours d’eau colluviaux à fortes pentes en
+têtes de bassin versant alpines, ainsi que la fréquence et la durée de
+leur intermittence restreint la diversité de ceux pouvant être
+caractérisés. De plus, ces limites peuvent être couplées à une
+difficulté de progression au sein même des stations lors du déploiement
+de ROHZACE au regard des fortes pentes. Ces hydrosystèmes
+nécessiteraient ainsi l’élaboration d’une méthodologie complémentaire,
+adaptée à leurs spécificités, afin d’améliorer leur connaissance et leur
+caractérisation par d’autres moyens que le protocole ROHZACE. Dans cette
+perspective, la mobilisation des données issues du Lidar HD ou
+d’orthophotographies acquises par vecteur drone pourraient constituer
+une piste intéressante.</p>
+</div>
+<div
+id="analyse-des-données-alpines-en-comparaison-avec-dautres-territoires-géographiques"
+class="section level3">
+<h3><strong>Analyse des données alpines en comparaison avec d’autres
+territoires géographiques</strong></h3>
+<p>La variabilité des caractéristiques hydromorphologiques et
+environnementales des cours d’eau en TBV de références alpines à
+l’échelle des massifs des Écrins, du Queyras et du Mercantour apparait
+relativement réduite. Cette faible variabilité peut limiter
+l’identification de relations entre les caractéristiques des cours d’eau
+et les variables environnementales étudiées. Une analyse comparative
+avec des territoires présentant des contextes géographiques, climatiques
+et géologiques distincts pourrait ainsi permettre de mettre en évidence
+des disparités plus finement marquées et d’identifier d’éventuelles
+spécificités propres au contexte alpin. Les données précédemment
+acquises dans le cadre du projet sur les territoires du Massif
+armoricain, de la Guyane ou de la Polynésie Française pourraient
+permettre des comparaisons intéressantes.</p>
+</div>
+<div id="ordination-du-réseau-hydrographique" class="section level3">
+<h3><strong>Ordination du réseau hydrographique</strong></h3>
+<p>La définition et la caractérisation d’un cours d’eau en contexte
+alpin demeurent difficiles à appréhender et très dépendantes du
+référentiel mobilisé. L’approche fondée sur la classification de
+Strahler du réseau hydrographique de la BD Topage a notamment mis en
+évidence certaines limites des cartographies disponibles sur les TBV
+alpines. Ces limites peuvent induire un biais dans la sélection
+préalable des stations et dans leur identification lors des campagnes de
+terrain.<br />
+En effet, certains cours d’eau identifiés cartographiquement comme étant
+de rang 3 peuvent, sur le terrain, présenter des caractéristiques
+davantage associées à des cours d’eau de TBV (rangs 1 ou 2). La
+pertinence de l’utilisation de l’ordination de Strahler comme seul
+critère de sélection des cours d’eau pourrait ainsi être réévaluée. Une
+réflexion pourrait notamment porter sur la combinaison de cette
+classification avec d’autres critères morphologiques, hydrologiques,
+géologiques ou topographiques permettant de mieux caractériser les cours
+d’eau en contexte alpin.</p>
+</div>
+<div id="caractérisation-des-faciès" class="section level3">
+<h3><strong>Caractérisation des faciès</strong></h3>
+<p>La caractérisation des faciès prévue par le protocole nécessite que
+les cours d’eau présentent un débit compris entre l’étiage et le module.
+Cette condition restreint le nombre de cours d’eau sur lesquels le
+protocole peut être déployé et la période de caractérisation,
+constituant une limite importante en contexte alpin. Par ailleurs,
+l’intermittence de ces cours d’eau, susceptible de s’intensifier dans un
+contexte de modification des régimes hydrologiques liée au changement
+climatique, pourrait encore limiter leur caractérisation à long terme.
+Dans ce contexte, la pertinence de maintenir la caractérisation des
+faciès telle qu’elle est proposée dans le protocole pourrait être
+questionnée. Une typologie alternative, davantage adaptée aux cours
+d’eau intermittents ou présentant de faibles débits pourrait être
+envisagée afin d’élargir les possibilités d’application du
+protocole.</p>
+</div>
+<div id="intégration-de-donnéesmesures-complémentaires"
+class="section level3">
+<h3><strong>Intégration de données/mesures complémentaires</strong></h3>
+<p>L’altitude (considérée à l’aval de la station) pourrait constituer un
+proxy de certaines variables environnementales actuellement non prises
+en compte dans les modèles. Parmi ces variables, la géologie pourrait
+représenter un paramètre structurant des caractéristiques
+hydromorphologique des cours d’eau. Ses conséquences en matière de
+perméabilité et d’érodabilité sont susceptibles d’influencer les régimes
+et modalités d’écoulement, notamment souterrains, ainsi que les
+caractéristiques granulométriques observées au niveau des stations.
+L’intégration de données géologiques du bassin versant amont dans les
+analyses pourrait ainsi permettre de mieux prendre en compte la
+variabilité des contextes environnementaux et d’affiner l’interprétation
+des relations observées entre les variables explicatives et les
+caractéristiques hydromorphologiques. La pente actuellement étudiée
+correspond à la pente de la ligne d’eau mesurée à l’échelle de la
+station. Cette variable pourrait être complétée par des indicateurs
+caractérisant la pente du bassin versant amont.</p>
+</div>
+</div>
+<div id="annexes" class="section level1">
+<h1><strong>Annexes</strong></h1>
+<div align="center">
+<p><img src="data/rmarkdown_partenaires/mercantour/granulo_mercantour.png" width="700px" style="border: 1px solid black;"></p>
+<p><em>Annexe 1 : Classes granulométriques des sédiments issues des
+stations étudiées dans le Mercantour, Lou Rossano.</em></p>
+</div>
+<div align="center">
+<p><img src="data/rmarkdown_partenaires/queyras/granulo_queyras.png" width="700px" style="border: 1px solid black;"></p>
+<p><em> Annexe 2 : Classes granulométriques des sédiments issues des
+stations étudiées dans le Queyras, Lou Rossano.</em></p>
+</div>
+<div align="center">
+<p><img src="data/rmarkdown_partenaires/ecrins/granulo_ecrins.png" width="700px" style="border: 1px solid black;"></p>
+<p><em>Annexe 3 : Classes granulométriques des sédiments issues des
+stations étudiées dans les Ecrins, Lou Rossano.</em></p>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
+<div id="ref-alexander_role_2007" class="csl-entry">
+Alexander, Richard B., Elizabeth W. Boyer, Richard A. Smith, Gregory E.
+Schwarz, and Richard B. Moore. 2007. <span>“The Role of Headwater
+Streams in Downstream Water Quality<span
+class="math inline">\(^{\textrm{1}}\)</span>.”</span>
+<em><span>JAWRA</span> Journal of the American Water Resources
+Association</em> 43 (1): 41–59. <a
+href="https://doi.org/10.1111/j.1752-1688.2007.00005.x">https://doi.org/10.1111/j.1752-1688.2007.00005.x</a>.
+</div>
+<div id="ref-armanini_towards_2013" class="csl-entry">
+Armanini, D. G., W. A. Monk, L. Carter, D. Cote, and D. J. Baird. 2013.
+<span>“Towards Generalised Reference Condition Models for Environmental
+Assessment: A Case Study on Rivers in Atlantic Canada.”</span>
+<em>Environmental Monitoring and Assessment</em> 185 (8): 6247–59. <a
+href="https://doi.org/10.1007/s10661-012-3021-2">https://doi.org/10.1007/s10661-012-3021-2</a>.
+</div>
+<div id="ref-barnaud_cours_2013" class="csl-entry">
+Barnaud, Geneviève. 2013. <span>“cours d’eau et zones humides
+associées.”</span>
+</div>
+<div id="ref-benda2005" class="csl-entry">
+Benda, Lee, Marwan A. Hassan, Michael Church, and Christine L. May.
+2005. <span>“GEOMORPHOLOGY OF STEEPLAND HEADWATERS: THE TRANSITION FROM
+HILLSLOPES TO CHANNELS.”</span> <em>Journal of the American Water
+Resources Association</em> 41 (4): 835851. <a
+href="https://doi.org/10.1111/j.1752-1688.2005.tb04466.x">https://doi.org/10.1111/j.1752-1688.2005.tb04466.x</a>.
+</div>
+<div id="ref-bishop_aqua_2008" class="csl-entry">
+Bishop, K., I. Buffam, M. Erlandsson, J. Fölster, H. Laudon, J. Seibert,
+and J. Temnerud. 2008. <span>“Aqua Incognita: The Unknown
+Headwaters.”</span> <em>Hydrological Processes</em> 22 (8): 1239–42. <a
+href="https://doi.org/10.1002/hyp.7049">https://doi.org/10.1002/hyp.7049</a>.
+</div>
+<div id="ref-boon_river_1992" class="csl-entry">
+Boon, P. J., P. Calow, and G. E. Petts. 1992. <span>“River Conservation
+and Management.”</span> In <em>River Conservation and Management</em>.
+John Wiley &amp; Sons Ltd, Chichester, <span>UK</span>. <a
+href="https://www.scopus.com/pages/publications/84988898485">https://www.scopus.com/pages/publications/84988898485</a>.
+</div>
+<div id="ref-brown_alpine_2003" class="csl-entry">
+Brown, L. E., D. M. Hannah, and A. M. Milner. 2003. <span>“Alpine Stream
+Habitat Classification: An Alternative Approach Incorporating the Role
+of Dynamic Water Source Contributions.”</span> <em>Arctic, Antarctic,
+and Alpine Research</em> 35 (3): 313–22. <a
+href="https://doi.org/10.1657/1523-0430(2003)035%5B0313:ASHCAA%5D2.0.CO;2">https://doi.org/10.1657/1523-0430(2003)035[0313:ASHCAA]2.0.CO;2</a>.
+</div>
+<div id="ref-brown_spatial_2008" class="csl-entry">
+Brown, Lee E., and David M. Hannah. 2008. <span>“Spatial Heterogeneity
+of Water Temperature Across an Alpine River Basin.”</span>
+<em>Hydrological Processes</em> 22 (7): 954–67. <a
+href="https://doi.org/10.1002/hyp.6982">https://doi.org/10.1002/hyp.6982</a>.
+</div>
+<div id="ref-brown2005" class="csl-entry">
+Brown, Lee E., David M. Hannah, and Alexander M. Milner. 2005.
+<span>“Spatial and Temporal Water Column and Streambed Temperature
+Dynamics Within an Alpine Catchment: Implications for Benthic
+Communities.”</span> <em>Hydrological Processes</em> 19 (8): 15851610.
+<a
+href="https://doi.org/10.1002/hyp.5590">https://doi.org/10.1002/hyp.5590</a>.
+</div>
+<div id="ref-costigan_understanding_2016" class="csl-entry">
+Costigan, Katie H., Kristin L. Jaeger, Charles W. Goss, Ken M. Fritz,
+and P. Charles Goebel. 2016. <span>“Understanding Controls on Flow
+Permanence in Intermittent Rivers to Aid Ecological Research:
+Integrating Meteorology, Geology and Land Cover.”</span>
+<em>Ecohydrology</em> 9 (7): 1141–53. <a
+href="https://doi.org/10.1002/eco.1712">https://doi.org/10.1002/eco.1712</a>.
+</div>
+<div id="ref-datry_intermittence_2026" class="csl-entry">
+Datry, Thibault. 2026. <span>“Intermittence des cours d’eau — Quelles
+pratiques de gestion ?”</span> 82.
+</div>
+<div id="ref-dufour_myth_2009" class="csl-entry">
+Dufour, Simon, and Hervé Piégay. 2009. <span>“From the Myth of a Lost
+Paradise to Targeted River Restoration: Forget Natural References and
+Focus on Human Benefits.”</span> <em>River Research and
+Applications</em> 25 (5): 568–81. <a
+href="https://doi.org/10.1002/rra.1239">https://doi.org/10.1002/rra.1239</a>.
+</div>
+<div id="ref-gob_outil_2014" class="csl-entry">
+Gob, Frédéric, Clélia Bilodeau, Nathalie Thommeret, Jérôme Belliard,
+Marie-Bernadette Albert, Vincent Tamisier, Jean-Marc Baudoin, and Karl
+Kreutzenberger. 2014. <span>“Un outil de caractérisation
+hydromorphologique des cours d’eau pour l’application de la
+<span>DCE</span> en France (<span>CARHYCE</span>).”</span>
+<em>Géomorphologie : relief, processus, environnement</em> 20 (1):
+57–72. <a
+href="https://doi.org/10.4000/geomorphologie.10497">https://doi.org/10.4000/geomorphologie.10497</a>.
+</div>
+<div id="ref-godet2023" class="csl-entry">
+Godet, Laurent, Simon Dufour, and Anne-Julia Rollet. 2023a.
+<em>Conservation de La Biodiversité Et État de Référence</em>. ISTE
+Group. <a
+href="https://doi.org/10.51926/ISTE.9781784059132">https://doi.org/10.51926/ISTE.9781784059132</a>.
+</div>
+<div id="ref-godet2023a" class="csl-entry">
+———. 2023b. <em>Conservation de La Biodiversité Et État de
+Référence</em>. ISTE Group. <a
+href="https://doi.org/10.51926/ISTE.9781784059132">https://doi.org/10.51926/ISTE.9781784059132</a>.
+</div>
+<div id="ref-godet2023b" class="csl-entry">
+———. 2023c. <em>Conservation de La Biodiversité Et État de
+Référence</em>. ISTE Group. <a
+href="https://doi.org/10.51926/ISTE.9781784059132">https://doi.org/10.51926/ISTE.9781784059132</a>.
+</div>
+<div id="ref-golden2025" class="csl-entry">
+Golden, Heather E., Jay Christiensen, Hilary McMillan, Christa A.
+Kelleher, Charles R. Lane, Admin Husic, Li Li, et al. 2025.
+<span>“Advancing the Science of Headwater Streamflow for Global Water
+Protection.”</span> <em>Nature Water</em> 3: 1626. <a
+href="https://doi.org/10.1038/s44221-024-00351-1">https://doi.org/10.1038/s44221-024-00351-1</a>.
+</div>
+<div id="ref-gomi_understanding_2002" class="csl-entry">
+Gomi, Takashi, Roy C. Sidle, and John S. Richardson. 2002.
+<span>“Understanding Processes and Downstream Linkages of Headwater
+Systems.”</span> <em><span>BioScience</span></em> 52 (10): 905. <a
+href="https://doi.org/10.1641/0006-3568(2002)052%5B0905:UPADLO%5D2.0.CO;2">https://doi.org/10.1641/0006-3568(2002)052[0905:UPADLO]2.0.CO;2</a>.
+</div>
+<div id="ref-guyon_ecological_2018" class="csl-entry">
+Guyon, Lyle J., and Loretta L. Battaglia. 2018. <span>“Ecological
+Characteristics of Floodplain Forest Reference Sites in the Upper
+Mississippi River System.”</span> <em>Forest Ecology and Management</em>
+427: 208–16. <a
+href="https://agris.fao.org/search/en/providers/122535/records/65dfe41c4c5aef494fe65462">https://agris.fao.org/search/en/providers/122535/records/65dfe41c4c5aef494fe65462</a>.
+</div>
+<div id="ref-hannah2007" class="csl-entry">
+Hannah, David M., Lee E. Brown, Alexander M. Milner, Angela M. Gurnell,
+Glenn R. McGregor, Geoff E. Petts, Barnaby P. G. Smith, and Deborah L.
+Snook. 2007. <span>“Integrating
+Climate<span></span>hydrology<span></span>ecology for Alpine River
+Systems.”</span> <em>Aquatic Conservation: Marine and Freshwater
+Ecosystems</em> 17 (6): 636–56. <a
+href="https://doi.org/10.1002/aqc.800">https://doi.org/10.1002/aqc.800</a>.
+</div>
+<div id="ref-herlihy_striving_2008" class="csl-entry">
+Herlihy, Alan T., Steven G. Paulsen, John Van Sickle, John L. Stoddard,
+Charles P. Hawkins, and Lester L. Yuan. 2008. <span>“Striving for
+Consistency in a National Assessment: The Challenges of Applying a
+Reference-Condition Approach at a Continental Scale.”</span> <em>Journal
+of the North American Benthological Society</em> 27 (4): 860–77. <a
+href="https://doi.org/10.1899/08-081.1">https://doi.org/10.1899/08-081.1</a>.
+</div>
+<div id="ref-hungr_debris-flow_2005" class="csl-entry">
+Hungr, O. 2005. <span>“Debris-Flow Hazards and Related Phenomena
+<span></span> Springer Nature Link.”</span> 2005. <a
+href="https://link.springer.com/book/10.1007/b138657">https://link.springer.com/book/10.1007/b138657</a>.
+</div>
+<div id="ref-janisch2012" class="csl-entry">
+Janisch, Jack E., Steven M. Wondzell, and William J. Ehinger. 2012.
+<span>“Headwater Stream Temperature: Interpreting Response After
+Logging, with and Without Riparian Buffers, Washington, USA.”</span>
+<em>Forest Ecology and Management</em> 270 (April): 302313. <a
+href="https://doi.org/10.1016/j.foreco.2011.12.035">https://doi.org/10.1016/j.foreco.2011.12.035</a>.
+</div>
+<div id="ref-jenkins_global_2013" class="csl-entry">
+Jenkins, Clinton N., Stuart L. Pimm, and Lucas N. Joppa. 2013.
+<span>“Global Patterns of Terrestrial Vertebrate Diversity and
+Conservation.”</span> <em>Proceedings of the National Academy of
+Sciences of the United States of America</em> 110 (28): E2602–2610. <a
+href="https://doi.org/10.1073/pnas.1302251110">https://doi.org/10.1073/pnas.1302251110</a>.
+</div>
+<div id="ref-lamouille-hebert_ecologie_2025" class="csl-entry">
+Lamouille-Hébert, Marie. 2025. <span>“Ecologie Des Communautés Des Mares
+Et Étangs Alpins Dans Un Contexte de Changement Climatique.”</span>
+Theses, Université Claude Bernard - Lyon I. <a
+href="https://theses.hal.science/tel-05291328">https://theses.hal.science/tel-05291328</a>.
+</div>
+<div id="ref-le_bihan_enterrement_2009" class="csl-entry">
+Le Bihan, M. 2009. <span>“Enterrement Des Cours d’eau En Tête de
+Bassin.”</span>
+</div>
+<div id="ref-le_bihan_methodologie_2023" class="csl-entry">
+Le Bihan, Mikael. 2023. <em>Méthodologie d’évaluation de
+l’hydromorphologie Des Cours d’eau En Tête de Bassin Versant à l’échelle
+Linéaire</em>.
+</div>
+<div id="ref-le_bihan_releves_2025" class="csl-entry">
+Le Bihan, Mikaël, Gabriel Melun, Michaël Cagnant, Alexandra Hubert,
+Olivier Ledouble, Pascal Irz, and Hélène Udo. 2025. <span>“Relevés Et
+Observations Hydromorphologiques Sur Les Zones Amont de Cours d’eau.
+Protocole <span>ROHZACE</span>.”</span> Office Francais de la
+Biodiversité. <a
+href="https://hal.science/hal-05003485">https://hal.science/hal-05003485</a>.
+</div>
+<div id="ref-lheritier_tetes_2012" class="csl-entry">
+Lhéritier, Nicolas. 2012. <span>“Les têtes de bassin : De la
+cartographie aux échelles mondiale et française à la caractérisation des
+ruisseaux limousins.”</span>
+</div>
+<div id="ref-liebault_geomorphology_2017" class="csl-entry">
+Liébault, F. 2017. <span>“Geomorphology and Sediment Transport of Alpine
+Fluvial Systems: From Steep-Slope Torrents to Piedmont Gravel-Bed
+Rivers.”</span> Thesis, Université grenoble Alpes. <a
+href="https://hal.inrae.fr/tel-02606790">https://hal.inrae.fr/tel-02606790</a>.
+</div>
+<div id="ref-macdonald_influence_2007" class="csl-entry">
+MacDonald, Lee H., and Drew Coe. 2007. <span>“Influence of Headwater
+Streams on Downstream Reaches in Forested Areas.”</span> <em>Forest
+Science</em> 53 (2): 148–68. <a
+href="https://doi.org/10.1093/forestscience/53.2.148">https://doi.org/10.1093/forestscience/53.2.148</a>.
+</div>
+<div id="ref-malard_flood-pulse_2006" class="csl-entry">
+Malard, Florian, Urs Uehlinger, Rainer Zah, and Klement Tockner. 2006.
+<span>“Flood-Pulse and Riverscape Dynamics in a Braided Glacial
+River.”</span> <em>Ecology</em> 87 (3): 704–16. <a
+href="https://doi.org/10.1890/04-0889">https://doi.org/10.1890/04-0889</a>.
+</div>
+<div id="ref-mengin2009" class="csl-entry">
+Mengin, N., N. Bougon, A. Chandesris, F. Oraison, Yves Souchon, L.
+Valette, and Bertrand Villeneuve. 2009. <span>“Réseau de Référence Des
+Eaux Douces de Surface Cours d’eau.”</span> <a
+href="https://hal.inrae.fr/hal-02593982">https://hal.inrae.fr/hal-02593982</a>.
+</div>
+<div id="ref-meyer_where_2003" class="csl-entry">
+Meyer, J. L. 2003. <span>“Where Rivers Are Born: The Scientific
+Imperative for Defending Small Streams and Wetlands,”</span> 24.
+</div>
+<div id="ref-meyer_lost_2001" class="csl-entry">
+Meyer, J. L, and J. B Wallace. 2001. <span>“Lost Linkages and Lotic
+Ecology : Rediscovering Small Streams. Ecology : Achievement and
+Challenge,”</span> 295–317.
+</div>
+<div id="ref-milner_water_2010" class="csl-entry">
+Milner, A. M., J. E. Brittain, L. E. Brown, and D. M. Hannah. 2010.
+<span>“Water Sources and Habitat of Alpine Streams.”</span> In
+<em>Alpine Waters</em>, edited by Ulrich Bundi, 175–91. Berlin,
+Heidelberg: Springer. <a
+href="https://doi.org/10.1007/978-3-540-88275-6_9">https://doi.org/10.1007/978-3-540-88275-6_9</a>.
+</div>
+<div id="ref-milner_trends_2001-1" class="csl-entry">
+Milner, Alexander M., John E. Brittain, Emmanuel Castella, and Geoffrey
+E. Petts. 2001. <span>“Trends of Macroinvertebrate Community Structure
+in Glacier-Fed Rivers in Relation to Environmental Conditions: A
+Synthesis.”</span> <em>Freshwater Biology</em> 46 (12): 1833–47. <a
+href="https://doi.org/10.1046/j.1365-2427.2001.00861.x">https://doi.org/10.1046/j.1365-2427.2001.00861.x</a>.
+</div>
+<div id="ref-montgomery_source_1989" class="csl-entry">
+Montgomery, David R., and William E. Dietrich. 1989. <span>“Source
+Areas, Drainage Density, and Channel Initiation.”</span> <em>Water
+Resources Research</em> 25 (8): 1907–18. <a
+href="https://doi.org/10.1029/WR025i008p01907">https://doi.org/10.1029/WR025i008p01907</a>.
+</div>
+<div id="ref-sanchez-montoya_defining_2009" class="csl-entry">
+Sánchez-Montoya, M. M., M. R. Vidal-Abarca, T. Puntí, J. M. Poquet, N.
+Prat, M. Rieradevall, J. Alba-Tercedor, et al. 2009. <span>“Defining
+Criteria to Select Reference Sites in Mediterranean Streams.”</span>
+<em>Hydrobiologia</em> 619 (1): 39–54. <a
+href="https://doi.org/10.1007/s10750-008-9580-0">https://doi.org/10.1007/s10750-008-9580-0</a>.
+</div>
+<div id="ref-schletterer_lowland_2014" class="csl-entry">
+Schletterer, M., L. Füreder, V. V. Kuzovlev, Y. N. Zhenikov, and I. L.
+Grigorieva. 2014. <span>“Lowland River Reference Condition: Spatial and
+Temporal Patterns of the Zoobenthos Community in the Volga Headwaters
+(2006–2010).”</span> <em>Hydrobiologia</em> 729 (1): 175–89. <a
+href="https://doi.org/10.1007/s10750-013-1466-0">https://doi.org/10.1007/s10750-013-1466-0</a>.
+</div>
+<div id="ref-schumm_evolution_1956" class="csl-entry">
+SCHUMM, S. A. 1956. <span>“Evolution of Drainage Systems and Slopes in
+Badlands at Perth Amboy. New Jersey”</span> 67: 597–646.
+</div>
+<div id="ref-sidle2018" class="csl-entry">
+Sidle, Roy C., Takashi Gomi, and Yoshinori Tsukamoto. 2018.
+<span>“Discovery of Zero-Order Basins as an Important Link for Progress
+in Hydrogeomorphology.”</span> <em>Hydrological Processes</em> 32 (19):
+30593065. <a
+href="https://doi.org/10.1002/hyp.13246">https://doi.org/10.1002/hyp.13246</a>.
+</div>
+<div id="ref-sidle2000" class="csl-entry">
+Sidle, Roy C., Yoshio Tsuboyama, Shoji Noguchi, Ikuhiro Hosoda, Motohisa
+Fujieda, and Toshio Shimizu. 2000. <span>“Stormflow Generation in Steep
+Forested Headwaters: A Linked Hydrogeomorphic Paradigm.”</span>
+<em>Hydrological Processes</em> 14 (3): 369–85. <a
+href="https://doi.org/10.1002/(SICI)1099-1085(20000228)14:3%3C369::AID-HYP943%3E3.0.CO;2-P">https://doi.org/10.1002/(SICI)1099-1085(20000228)14:3&lt;369::AID-HYP943&gt;3.0.CO;2-P</a>.
+</div>
+<div id="ref-souchon_regionalisation_2000" class="csl-entry">
+Souchon, Y., Pierre Cohen, and Heri Andriamahéfa. 2000.
+<span>“<span>REGIONALISATION</span> <span>DE</span>
+L’<span>HABITAT</span> <span>AQUATIQUE</span> <span>DANS</span>
+<span>LE</span> <span>BASSIN</span>
+<span>LOIRE</span>-<span>BRETAGNE</span> : <span>ELEMENTS</span>
+<span>DE</span> <span>CADRAGE</span> D’<span>UNE</span>
+<span>POLITIQUE</span> <span>GLOBALE</span> <span>DE</span>
+<span>GESTION</span> <span>DES</span> <span>DEBITS</span>
+<span>ET</span> <span>DE</span> <span>RESTAURATION</span>
+<span>PHYSIQUE</span> <span>DES</span> <span>COURS</span>
+D’<span>EAU</span>.”</span> 2000. <a
+href="https://bretagne-environnement.fr/notice-documentaire/regionalisation-habitat-aquatique-bassin-loire-bretagne-elements-cadrage-une-politique-globale-gestion-debits-restauration-physique-cours-eau-rapport-final">https://bretagne-environnement.fr/notice-documentaire/regionalisation-habitat-aquatique-bassin-loire-bretagne-elements-cadrage-une-politique-globale-gestion-debits-restauration-physique-cours-eau-rapport-final</a>.
+</div>
+<div id="ref-strahler_quantitative_1957" class="csl-entry">
+Strahler, Arthur N. 1957. <span>“Quantitative Analysis of Watershed
+Geomorphology 1957.”</span> Wiley Online Library. 1957. <a
+href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/TR038i006p00913">https://agupubs.onlinelibrary.wiley.com/doi/10.1029/TR038i006p00913</a>.
+</div>
+<div id="ref-uehlinger_ecology_2003" class="csl-entry">
+Uehlinger, U. 2003. <span>“Ecology of a Glacial Flood Plain.
+<span>ResearchGate</span>.”</span> 2003. <a
+href="https://www.researchgate.net/publication/321611178_Ecology_of_a_Glacial_Flood_Plain">https://www.researchgate.net/publication/321611178_Ecology_of_a_Glacial_Flood_Plain</a>.
+</div>
+<div id="ref-viviroli_mountains_2007" class="csl-entry">
+Viviroli, Daniel, Hans H. Dürr, Bruno Messerli, Michel Meybeck, and Rolf
+Weingartner. 2007. <span>“Mountains of the World, Water Towers for
+Humanity: Typology, Mapping, and Global Significance.”</span> <em>Water
+Resources Research</em> 43 (7): 2006WR005653. <a
+href="https://doi.org/10.1029/2006WR005653">https://doi.org/10.1029/2006WR005653</a>.
+</div>
+<div id="ref-wissinger_invertebrate_2016" class="csl-entry">
+Wissinger, S. A, B Oertli, and V Rosset. 2016. <span>“Invertebrate
+Communities in Alpine Ponds <span>IN</span>: Batzer, d.p, and d. Boix
+(Ed.) Invertebrates in Freshwater Wetlands.”</span> In
+<em><span>ResearchGate</span></em>, 55–103. <a
+href="https://www.researchgate.net/publication/296061991_Invertebrate_communities_in_alpine_ponds_IN_Batzer_DP_and_D_Boix_ed_Invertebrates_in_Freshwater_Wetlands_An_international_Perspective_on_Their_Ecology">https://www.researchgate.net/publication/296061991_Invertebrate_communities_in_alpine_ponds_IN_Batzer_DP_and_D_Boix_ed_Invertebrates_in_Freshwater_Wetlands_An_international_Perspective_on_Their_Ecology</a>.
+</div>
+<div id="ref-wyzga2012" class="csl-entry">
+Wyżga, Bartłomiej, Joanna Zawiejska, Artur Radecki-Pawlik, and Hanna
+Hajdukiewicz. 2012. <span>“Environmental Change, Hydromorphological
+Reference Conditions and the Restoration of Polish Carpathian
+Rivers.”</span> <em>Earth Surface Processes and Landforms</em> 37 (11):
+1213–26. <a
+href="https://doi.org/10.1002/esp.3273">https://doi.org/10.1002/esp.3273</a>.
+</div>
+<div id="ref-zah_particulate_2001" class="csl-entry">
+Zah, Rainer, and Urs Uehlinger. 2001. <span>“Particulate Organic Matter
+Inputs to a Glacial Stream Ecosystem in the Swiss Alps.”</span>
+<em>Freshwater Biology</em> 46 (12): 1597–1608. <a
+href="https://doi.org/10.1046/j.1365-2427.2001.00847.x">https://doi.org/10.1046/j.1365-2427.2001.00847.x</a>.
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
